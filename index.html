@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТОО «Валенсия-НС» — Охранные системы и видеонаблюдение в Астане</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1120;
+      --surface: #131c31;
+      --surface-hover: #192540;
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-dark: #0284c7;
+      --border: #23304d;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+    /* Шапка */
+    header {
+      padding: 16px 0;
+      background: rgba(11, 17, 32, 0.94);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(10px);
+    }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 20px; letter-spacing: 0.4px; text-transform: uppercase;
+    }
+    .logo span { color: var(--accent); }
+    .b2b-badge {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: var(--accent);
+      padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Первый экран */
+    .hero {
+      padding: 62px 0 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .tag {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: 600;
+    }
+    .tag span { color: #f59e0b; }
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 5vw, 46px); line-height: 1.15;
+      max-width: 840px; margin-bottom: 18px;
+    }
+    .hero p {
+      color: var(--muted); max-width: 640px; font-size: 16px; margin-bottom: 30px;
+    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      padding: 15px 28px; border-radius: 8px; font-weight: 700; font-size: 15px;
+      text-decoration: none; cursor: pointer; border: none; transition: 0.2s; display: inline-block;
+    }
+    .btn-primary { background: var(--accent); color: #081226; }
+    .btn-primary:hover { background: var(--accent-dark); color: #fff; }
+    .btn-secondary { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); }
+
+    /* Инфо-блоки */
+    .info-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px; margin: 36px 0 60px;
+    }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 20px; border-radius: 12px;
+    }
+    .info-card small { color: var(--muted); font-size: 13px; display: block; margin-bottom: 4px; }
+    .info-card strong { font-size: 15px; color: #fff; }
+
+    /* Направления */
+    h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(24px, 4vw, 34px); margin-bottom: 8px;
+    }
+    .sub-title { color: var(--muted); font-size: 15px; margin-bottom: 30px; }
+    .grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px; margin-bottom: 64px;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 24px; border-radius: 14px; display: flex; flex-direction: column;
+      justify-content: space-between; transition: 0.2s;
+    }
+    .card:hover { border-color: var(--accent); background: var(--surface-hover); }
+    .card-tag {
+      display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 10px; letter-spacing: 0.8px;
+    }
+    .card h3 { font-size: 18px; margin-bottom: 8px; color: #fff; }
+    .card p { font-size: 14px; color: var(--muted); margin-bottom: 20px; }
+    .card-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 14px; border-top: 1px solid var(--border);
+    }
+    .status { font-size: 13px; font-weight: 600; color: #34d399; }
+    .btn-sm {
+      background: transparent; border: 1px solid var(--border); color: var(--text);
+      padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer;
+    }
+    .btn-sm:hover { background: var(--accent); border-color: var(--accent); color: #081226; }
+
+    /* Форма расчёта */
+    .calc-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 26px; margin-bottom: 64px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 30px;
+    }
+    .calc-info h2 { margin-bottom: 12px; }
+    .calc-info p { color: var(--muted); font-size: 15px; margin-bottom: 20px; }
+    .list { list-style: none; }
+    .list li {
+      margin-bottom: 10px; font-size: 14px; padding-left: 22px; position: relative;
+    }
+    .list li::before {
+      content: "✓"; color: var(--accent); position: absolute; left: 0; font-weight: 800;
+    }
+    .form-group { margin-bottom: 14px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, select, textarea {
+      width: 100%; padding: 12px 14px; background: var(--bg);
+      border: 1px solid var(--border); border-radius: 8px;
+      color: var(--text); font-family: inherit; font-size: 14px;
+    }
+    input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); }
+    .btn-wa {
+      width: 100%; background: #25D366; color: #06180d; font-weight: 700;
+      padding: 15px; font-size: 15px; margin-top: 6px;
+    }
+    .btn-wa:hover { background: #1ebe5d; }
+
+    /* Подвал */
+    footer {
+      border-top: 1px solid var(--border); padding: 32px 0;
+      text-align: center; font-size: 14px; color: var(--muted);
+    }
+    .demo-note {
+      margin-top: 14px; display: inline-block; background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3); color: var(--accent);
+      padding: 6px 14px; border-radius: 6px; font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">Валенсия<span>-НС</span></div>
+    <div class="b2b-badge">ТОО • Астана • Безнал</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-tags">
+      <div class="tag"><span>★ 5.0</span> в 2ГИС</div>
+      <div class="tag">Поставка • Монтаж • Обслуживание</div>
+    </div>
+    <h1>Охранные системы, видеонаблюдение и пожарная сигнализация в Астане</h1>
+    <p>Комплексное оснащение офисов, складов, магазинов, ЖК и частных домов современными системами безопасности. Поставка оборудования с доставкой и профессиональный монтаж под ключ.</p>
+    <div class="cta-row">
+      <a href="#calc" class="btn btn-primary">Запросить расчёт сметы</a>
+      <a href="tel:+77771166833" class="btn btn-secondary">+7 (777) 116-68-33</a>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="info-grid">
+    <div class="info-card">
+      <small>Офис в Астане</small>
+      <strong>ул. Александра Герцена, 93 (1 этаж, Сарыарка район)</strong>
+    </div>
+    <div class="info-card">
+      <small>График работы</small>
+      <strong>Пн – Пт: 09:00 – 18:00</strong>
+    </div>
+    <div class="info-card">
+      <small>Условия для организаций</small>
+      <strong>Оплата через банк • Доставка оборудования</strong>
+    </div>
+  </div>
+
+  <h2>Решения для безопасности</h2>
+  <p class="sub-title">Подбор оборудования под задачи объекта, монтаж и техническое сопровождение</p>
+
+  <div class="grid">
+    <div class="card">
+      <div>
+        <div class="card-tag">Видеоконтроль 24/7</div>
+        <h3>Системы видеонаблюдения</h3>
+        <p>IP и AHD камеры для помещений и улицы, видеорегистраторы, настройка удалённого просмотра с телефона.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="status">● Монтаж и настройка</span>
+        <button class="btn-sm" onclick="pickSys('Системы видеонаблюдения')">Рассчитать</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="card-tag">Защита объекта</div>
+        <h3>Охранно-пожарная сигнализация</h3>
+        <p>Датчики движения, дыма и открытия, тревожные кнопки, оповещение и противопожарное оборудование.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="status">● Под ключ</span>
+        <button class="btn-sm" onclick="pickSys('Охранно-пожарная сигнализация')">Рассчитать</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="card-tag">Контроль прохода</div>
+        <h3>СКУД, домофоны и электрозамки</h3>
+        <p>Магнитные и электромеханические замки, считыватели карт, турникеты и видеодомофоны для офисов и подъездов.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="status">● Оплата через банк</span>
+        <button class="btn-sm" onclick="pickSys('СКУД, домофоны и замки')">Рассчитать</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div>
+        <div class="card-tag">Поставка и сервис</div>
+        <h3>Оборудование и техобслуживание</h3>
+        <p>Поставка комплектующих с доставкой по Астане, диагностика, ремонт и регламентное обслуживание действующих систем.</p>
+      </div>
+      <div class="card-bottom">
+        <span class="status">● Доставка по городу</span>
+        <button class="btn-sm" onclick="pickSys('Поставка оборудования / обслуживание')">Оставить заявку</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-box" id="calc">
+    <div class="calc-info">
+      <h2>Заявка на подбор и расчёт</h2>
+      <p>Укажите тип объекта и задачу — обращение сразу откроется в WhatsApp нашего специалиста в Астане.</p>
+      <ul class="list">
+        <li>Работаем с юридическими и частными лицами</li>
+        <li>Официальная оплата через банк от ТОО «Валенсия-НС»</li>
+        <li>Подбор оборудования под ваш бюджет и планировку</li>
+      </ul>
+    </div>
+
+    <form onsubmit="sendWA(event)">
+      <div class="form-group">
+        <label>Ваше имя или название компании</label>
+        <input type="text" id="clientName" placeholder="Например, ТОО АстанаЛогистик / Даурен" required>
+      </div>
+      <div class="form-group">
+        <label>Направление</label>
+        <select id="sysSelect">
+          <option value="Системы видеонаблюдения">Системы видеонаблюдения</option>
+          <option value="Охранно-пожарная сигнализация">Охранно-пожарная сигнализация</option>
+          <option value="СКУД, домофоны и замки">СКУД, домофоны и замки</option>
+          <option value="Поставка оборудования / обслуживание">Поставка оборудования / обслуживание</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Тип объекта</label>
+        <select id="objSelect">
+          <option value="Офис / коммерческое помещение">Офис / коммерческое помещение</option>
+          <option value="Склад / производство">Склад / производство</option>
+          <option value="Магазин / ТЦ">Магазин / ТЦ</option>
+          <option value="Частный дом / ЖК">Частный дом / ЖК</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Задача или примерное количество точек</label>
+        <textarea id="details" rows="3" placeholder="Например: нужно 6 уличных камер на склад + регистратор с установкой" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-wa">Отправить запрос в WhatsApp</button>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div>ТОО «Валенсия-НС» • Охранные системы • г. Астана, ул. Александра Герцена, 93 (1 этаж) • +7 (777) 116-68-33</div>
+    <div class="demo-note">Демо-концепт корпоративного сайта подготовлен специально для ТОО «Валенсия-НС»</div>
+  </div>
+</footer>
+
+<script>
+  function pickSys(systemName) {
+    document.getElementById('sysSelect').value = systemName;
+    document.getElementById('calc').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function sendWA(e) {
+    e.preventDefault();
+    const name = document.getElementById('clientName').value;
+    const sys = document.getElementById('sysSelect').value;
+    const obj = document.getElementById('objSelect').value;
+    const details = document.getElementById('details').value;
+    const text = `Здравствуйте, ТОО «Валенсия-НС»! Нужен расчёт по охранным системам.\nКлиент: ${name}\nСистема: ${sys}\nОбъект: ${obj}\nЗадача: ${details}`;
+    window.open(`https://wa.me/77771166833?text=${encodeURIComponent(text)}`, '_blank');
+  }
+</script>
+
+</body>
+</html>
